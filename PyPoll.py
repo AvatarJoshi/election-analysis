@@ -1,42 +1,68 @@
-# Approach
-# 1.) Retrieve a list of all candidates
-# 2.) Count the votes each candidate received
-# 3.) Count the total votes cast
-# 4.) Calculate the percentage of votes each candidate received.
-# 5.) Determine the winner of the election
-
-# Imports datetime class from the datetime module.
+# Add our dependencies
 import datetime, csv, os
-# Use the now() attribute on the date time class to get the present time.
-now = datetime.datetime.now()
 
-#Print the present time.
-#print("The time right now is", now)
-
+# Assigned variable for election_results file path
 file_to_load = 'r3_election-analysis/Resources/election_results.csv'
 
-#Open the election results and read the file
-with open(file_to_load, 'r') as election_data:
+# Assign a variable to save the file to a path
+file_to_save = os.path.join("r3_election-analysis", "election_analysis.txt")
 
-    # To Do: Read and Analyze the Data Here
+# Initialize the vote counter
+total_votes = 0
 
-    # Read the file object with the reader function
+# List for candidate options
+candidate_options = []
+
+# Dictionary of candidates and their vote counts
+candidate_votes = {}
+
+#Track the winning candidate, vote count, and percentage
+winning_candidate = ""
+winning_count = 0
+winning_percentage = 0
+
+# Open the election results and read the file
+with open(file_to_load) as election_data:
+
+  # Read the file object with the reader function
     file_reader = csv.reader(election_data)
 
-    # Print the header row
+    # Read the header row
     headers = next(file_reader)
-    print(headers)
 
-    # Print each row in the file
-    #for row in file_reader:
-        #print(row)
+    # Total vote counter
+    for row in file_reader:
+        total_votes += 1
+
+        # Add unique names to candidate options list
+        candidate_name = row[2]
+        if candidate_name not in candidate_options:
+            candidate_options.append(candidate_name)
+
+            # Initialize candidate vote counter to 0
+            candidate_votes[candidate_name] = 0
+
+    # Track votes for each candidate
+        candidate_votes[candidate_name] += 1
+
+# Determine the votes associated with each candidate
+for candidate_name in candidate_votes:
+    votes = candidate_votes[candidate_name]
+    vote_percentage = float(votes) / float(total_votes) * 100
+    print(f'{candidate_name}: received {vote_percentage:.1f}% ({votes:,}\n) of the vote.')
 
 
-    
-# Create a filename variable to a direct or indirect path to the file.
-#file_to_save = os.path.join("r3_election-analysis", "analysis", "election_analysis.txt")
+    # Determine the winning vote count, winning percentage, and candidate.
+    if (votes > winning_count) and (vote_percentage > winning_percentage):
+        winning_count = votes
+        winning_candidate = candidate_name
+        winning_percentage = vote_percentage
 
-# Open and be able to write to our txt file.
-#with open(file_to_save, "w") as txt_file:
+# Print the winning candidates results to the terminal
+winning_candidate_summary = (
+    f'Winner: {candidate_name}\n'
+    f'Winning Vote Count: {winning_count:,}\n'
+    f'Winning Percentage: {winning_percentage:.1f}%\n')
 
+print(winning_candidate_summary)
 
