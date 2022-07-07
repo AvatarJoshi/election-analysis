@@ -4,4 +4,4 @@ Election Results
 Total Votes: 369,711
 -------------------------
 
-County Votes:0
+County Votes:{'Jefferson': 38855, 'Denver': 306055, 'Arapahoe': 24801}

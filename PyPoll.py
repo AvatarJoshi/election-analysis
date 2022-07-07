@@ -2,10 +2,10 @@
 import csv, os
 
 # Assigned variable for election_results file path
-file_to_load = 'r3_election-analysis/Resources/election_results.csv'
+file_to_load = 'Resources/election_results.csv'
 
 # Assign a variable to save the file to a path
-file_to_save = os.path.join("r3_election-analysis", "election_analysis.txt")
+file_to_save = os.path.join("election_analysis.txt")
 
 # Initialize a total vote counter.
 total_votes = 0
@@ -30,6 +30,8 @@ with open(file_to_load) as election_data:
         total_votes += 1
         # Get the candidate name from each row.
         candidate_name = row[2]
+        print(candidate_name)
+
         # If the candidate does not match any existing candidate, add the
         # the candidate list.
         if candidate_name not in candidate_options:
