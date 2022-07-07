@@ -10,21 +10,22 @@ A Colorado Board of Elections employee has asked us to help complete an election
 5. Determine the winner of the election based on the popular vote
 
 ## Resources
-- [PyPoll_Challenge][Resources/PyPoll_Challenge.py]
+- [PyPoll_Challenge](Resources/PyPoll_Challenge.py)
+- [Election_Analysis_Text_File](analysis/election_analysis.txt)
 
 ## Results
 The analysis of the election shows that:
 - There were a total of 369,711 votes cast in the election.
 
 - The candidates and their vote counts are as follows:
+
     - Charles Casper Stockham: 23.0% of the vote (85,213 votes)
-    - Diana DeGette: 73.8% of the vote (272,892 votes)
+    - **Diana DeGette: 73.8% of the vote (272,892 votes) (WINNER)**
     - Raymon Anthony Doane: 3.1% of the vote (11,606 votes)
 
-- The winner of the election was:
-    **Diana DeGette** who received 73.8% of the vote (272,892 votes)
 
-![Election_Analysis_Text][Resources/election_analysis.txt]
+
+
 
 ## Summary
 The script used for this analysis is able to generate a list of candidates, their vote counts, the candidate's percentage of the total vote, and the winner of the election. In addition, it provides a breakdown of votes by county. This code can be applied to different elections that have different candidates and county information provided the .CSV format remains the same as what was used here. 
