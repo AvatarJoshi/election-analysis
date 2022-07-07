@@ -1,4 +1,5 @@
-# .DS_Store file
+# My ignore files
+PyPoll.py
 .DS_Store
 
 # Byte-compiled / optimized / DLL files
